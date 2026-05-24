@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '../../../test-utils/render';
 import { MonthCalendar } from '../MonthCalendar';
-import { DailyLogEntry } from '../../../types';
+import type { DailyLogEntry } from '../../../types';
 
 const mayDate = new Date(2026, 4, 1); // May 2026
 
@@ -28,7 +28,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar
         currentDate={mayDate}
         logEntries={[]}
-        onDayClick={jest.fn()}
+        onDayClick={vi.fn()}
       />
     );
     ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach((day) => {
@@ -41,7 +41,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar
         currentDate={mayDate}
         logEntries={[]}
-        onDayClick={jest.fn()}
+        onDayClick={vi.fn()}
       />
     );
     expect(screen.getByText('31')).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar
         currentDate={mayDate}
         logEntries={mockLogEntries}
-        onDayClick={jest.fn()}
+        onDayClick={vi.fn()}
       />
     );
     const dayButtons = screen.getAllByRole('button');
@@ -68,7 +68,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar
         currentDate={mayDate}
         logEntries={mockLogEntries}
-        onDayClick={jest.fn()}
+        onDayClick={vi.fn()}
       />
     );
     const penaltyDays = container.querySelectorAll('.bg-cozy-pink');
@@ -81,7 +81,7 @@ describe('MonthCalendar', () => {
       <MonthCalendar
         currentDate={mayDate}
         logEntries={mockLogEntries}
-        onDayClick={jest.fn()}
+        onDayClick={vi.fn()}
       />
     );
     expect(screen.getByText('🪙5')).toBeInTheDocument();
@@ -89,7 +89,7 @@ describe('MonthCalendar', () => {
 
   // SR-41
   it('calls onDayClick with date when day button clicked', () => {
-    const handleDayClick = jest.fn();
+    const handleDayClick = vi.fn();
     render(
       <MonthCalendar
         currentDate={mayDate}

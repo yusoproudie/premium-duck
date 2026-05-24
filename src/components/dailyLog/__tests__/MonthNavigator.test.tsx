@@ -9,20 +9,20 @@ describe('MonthNavigator', () => {
     render(
       <MonthNavigator
         currentDate={mockDate}
-        onPrevious={jest.fn()}
-        onNext={jest.fn()}
+        onPrevious={vi.fn()}
+        onNext={vi.fn()}
       />
     );
     expect(screen.getByText('May 2026')).toBeInTheDocument();
   });
 
   it('calls onPrevious when left arrow clicked', () => {
-    const handlePrev = jest.fn();
+    const handlePrev = vi.fn();
     render(
       <MonthNavigator
         currentDate={mockDate}
         onPrevious={handlePrev}
-        onNext={jest.fn()}
+        onNext={vi.fn()}
       />
     );
     fireEvent.click(screen.getByRole('button', { name: /previous month/i }));
@@ -30,11 +30,11 @@ describe('MonthNavigator', () => {
   });
 
   it('calls onNext when right arrow clicked', () => {
-    const handleNext = jest.fn();
+    const handleNext = vi.fn();
     render(
       <MonthNavigator
         currentDate={mockDate}
-        onPrevious={jest.fn()}
+        onPrevious={vi.fn()}
         onNext={handleNext}
       />
     );

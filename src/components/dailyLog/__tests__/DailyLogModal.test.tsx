@@ -1,7 +1,7 @@
 import { render, screen } from '../../../test-utils/render';
 import userEvent from '@testing-library/user-event';
 import { DailyLogModal } from '../DailyLogModal';
-import { DailyTask } from '../../../types';
+import type { DailyTask } from '../../../types';
 
 const selectedDate = new Date(2026, 4, 15); // May 15
 
@@ -12,10 +12,10 @@ const existingTasks: DailyTask[] = [
 describe('DailyLogModal', () => {
   const defaultProps = {
     isOpen: true,
-    onClose: jest.fn(),
+    onClose: vi.fn(),
     selectedDate,
     tasks: [],
-    onSaveTasks: jest.fn(),
+    onSaveTasks: vi.fn(),
   };
 
   beforeEach(() => {
